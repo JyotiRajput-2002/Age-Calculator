@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age-calculator</title>
+    <link rel="stylesheet" href="age-calsi_codealpha.css">
+</head>
+<body>
+    <div class="Age-calculator">
+    <div class="calsi">
+        <h1>Age Calculator</h1>
+        <form>
+         <div class="container">
+        <div class="date">
+            <input type="text" name="date" id="date" placeholder="Date"  minilength="1" maxlength="2"  required>
+        </div>
+        <div class="Month">
+            <input type="text" name="month" id="month" placeholder="Month" minilength="1" maxlength="2"  required>
+        </div>
+        <div class="Year">
+            <input type="text" name="year" id="year" placeholder="Year"  minilength="4" maxlength="4" required>
+        </div></div>
+        <div class="base">
+        <input type="button" name="submit" value="submit" onclick="age()"/></div>
+        <div class="age" id="age"></div>
+    </form>
+    </div></div>
+    <script type="text/javascript">
+        function age() {
+            let d1 = document.getElementById('date').value;
+            let m1 = document.getElementById('month').value;
+            let y1 = document.getElementById('year').value;
+            
+            let date = new Date();
+            let d2 = date.getDate();
+            let m2 = 1 + date.getMonth();
+            let y2 = date.getFullYear();
+            let month=[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+            if (d1 > d2){
+                d2 = d2 + month[m2 - 1];
+                m2 = m2 - 1;
+            }
+            if (m1 > m2){
+                m2 = m2 + 12;
+                y2 = y2 - 1;
+            }
+            let d = d2 - d1;
+            let m = m2 - m1;
+            let y = y2 - y1;
+
+            document.getElementById('age').innerHTML = 'Your age is '+y+' Years '+m+' Months '+d+' Days';
+                }
+    </script>
+</body>
+</html>
